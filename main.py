@@ -151,30 +151,3 @@ class AddressBook(UserDict):
             names_str = ", ".join(names_list)
             formated = f"{day}: {names_str}"
             print(formated)
-
-
-book = AddressBook()
-
-# Створення запису для John
-john_record = Record("John")
-john_record.add_phone("1234567890")
-john_record.add_phone("5555555555")
-# print(john_record.add_birthday("13/07/1987"))
-
-# Додавання запису John до адресної книги
-book.add_record(john_record)
-book.add_birthday("John", "5/03/2020")
-
-jane_record = Record("Jane")
-jane_record.add_phone("9876543210")
-book.add_record(jane_record)
-book.add_birthday("Jane", "5/03/2020")
-
-yana_record = Record("Yana")
-yana_record.add_phone("9876543210")
-book.add_record(yana_record)
-book.add_birthday("Yana", "6/03/2020")
-
-# print(book.all())
-
-print(book.birthdays())
