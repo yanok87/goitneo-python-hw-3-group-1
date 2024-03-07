@@ -151,3 +151,62 @@ class AddressBook(UserDict):
             names_str = ", ".join(names_list)
             formated = f"{day}: {names_str}"
             print(formated)
+
+
+def parse_input(user_input):
+    """This function parses user input"""
+    cmd, *args = user_input.split()
+    cmd = cmd.strip().lower()
+    return cmd, *args
+
+
+def main():
+    """This function interacts with user and creates a phone book"""
+    book = AddressBook()
+
+    print("Welcome to the assistant bot!")
+    while True:
+        user_input = input("Enter a command: ")
+        command, *args = parse_input(user_input)
+
+        if command in ["close", "exit", "good bye"]:
+            print("Good bye!")
+            break
+        elif command == "hello":
+
+            print("How can I help you?")
+        elif command == "add":
+            name, phone = args
+            contact = Record(name)
+            contact.add_phone(phone)
+            book.add_record(contact)
+
+        elif command == "change":
+            name, phone = args
+            contact = book.find(name)
+            # contact.edit
+
+        elif command == "phone":
+            name = args
+            # print(contact(args, book))
+        elif command == "all":
+            print(book.all())
+
+        elif command == "add-birthday":
+            name, birthday = args
+            book.add_birthday(name, birthday)
+
+        elif command == "show-birthday":
+            [name] = args
+            print(book.show_birthday(name))
+
+        elif command == "birthdays":
+            print(book.birthdays())
+
+        else:
+            print("Invalid command.")
+
+
+if __name__ == "__main__":
+
+    main()
